@@ -11,6 +11,7 @@ const navLinks = [
   { to: '/treatments', label: 'Treatments' },
   { to: '/about', label: 'About' },
   { to: '/contact', label: 'Contact' },
+  { to: '/booking', label: 'Booking Form' },
 ];
 
 export default function NavBar({ onNavigate }: NavBarProps) {

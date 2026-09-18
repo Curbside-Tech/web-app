@@ -10,6 +10,7 @@ import SignIn from './pages/SignIn';
 import SignUp from './pages/SignUp';
 import HowItWorks from './pages/HowItWorks';
 import Treatments from './pages/Treatments';
+import BookingForm from './components/BookingForm';
 
 function RouteScrollManager() {
   const { pathname, hash } = useLocation();
@@ -40,6 +41,7 @@ export default function App() {
         <Route path="/privacy" element={<Privacy />} />
         <Route path="/sign-in" element={<SignIn />} />
         <Route path="/sign-up" element={<SignUp />} />
+        <Route path="/booking" element={<BookingForm />} />
       </Routes>
     </BrowserRouter>
   );
