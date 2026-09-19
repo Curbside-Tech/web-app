@@ -36,7 +36,7 @@ export default function TreatmentCard({ treatment }: TreatmentCardProps) {
       </p>
 
       <Link
-        to="/sign-up"
+        to={`/intake?care=${encodeURIComponent(treatment.name)}`}
         className="btn-primary mt-5 w-full text-center"
         state={{ treatmentId: treatment.id }}
       >

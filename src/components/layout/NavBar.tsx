@@ -7,6 +7,7 @@ interface NavBarProps {
 }
 
 const navLinks = [
+  { to: '/intake', label: 'Intake' },
   { to: '/how-it-works', label: 'How it works' },
   { to: '/treatments', label: 'Treatments' },
   { to: '/about', label: 'About' },
