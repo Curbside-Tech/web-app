@@ -10,6 +10,7 @@ import SignIn from './pages/SignIn';
 import SignUp from './pages/SignUp';
 import HowItWorks from './pages/HowItWorks';
 import Treatments from './pages/Treatments';
+import Intake from './pages/Intake';
 
 function RouteScrollManager() {
   const { pathname, hash } = useLocation();
@@ -33,6 +34,7 @@ export default function App() {
         <Route path="/" element={<Home />} />
         <Route path="/how-it-works" element={<HowItWorks />} />
         <Route path="/treatments" element={<Treatments />} />
+        <Route path="/intake" element={<Intake />} />
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/faq" element={<Faq />} />

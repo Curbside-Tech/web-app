@@ -56,3 +56,7 @@ Thumbs.db
 .cache/
 coverage/
 .nyc_output/
+node_modules
+dist
+.env
+.env.local

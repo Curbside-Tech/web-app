@@ -310,6 +310,10 @@
   .home-trust-grid > div { background: rgba(255, 255, 255, 0.86); padding: 1.5rem 1.75rem; }
   .home-trust-grid strong { display: block; color: #112b3c; font-size: 0.9rem; }
   .home-trust-grid span { display: block; margin-top: 0.25rem; color: #64748b; font-size: 0.78rem; }
+  .marketing-point { min-height: 180px; border: 1px solid rgba(11, 110, 157, 0.13); border-radius: 1.25rem; background: rgba(255,255,255,.7); padding: 1.5rem; }
+  .marketing-point > span { color: #0284c7; font-size: 1rem; }
+  .marketing-point h3 { margin-top: 2rem; color: #112b3c; font-size: 1.08rem; font-weight: 800; letter-spacing: -.025em; }
+  .marketing-point p { margin-top: .55rem; color: #64748b; font-size: .86rem; line-height: 1.55; }
 
   .moment-card {
     position: relative;
@@ -332,6 +336,17 @@
   .home-questions { background: linear-gradient(135deg, rgba(231, 246, 253, 0.95), rgba(255, 255, 255, 0.9)); border: 1px solid rgba(11, 110, 157, 0.13); }
   .home-question { background: rgba(255, 255, 255, 0.82); border: 1px solid rgba(11, 110, 157, 0.1); transition: transform 0.2s ease, box-shadow 0.2s ease; }
   @media (prefers-reduced-motion: no-preference) { .home-question:hover { transform: translateY(-2px); box-shadow: 0 12px 24px rgba(17, 43, 60, 0.08); } }
+  .intake-card, .intake-complete { border: 1px solid rgba(11, 110, 157, .14); background: rgba(255,255,255,.82); box-shadow: 0 18px 45px rgba(17,43,60,.07); }
+  .intake-care-option { display: flex; min-height: 220px; flex-direction: column; border: 1px solid rgba(11, 110, 157, .13); border-radius: 1.35rem; background: rgba(255,255,255,.76); padding: 1.5rem; box-shadow: 0 7px 20px rgba(17,43,60,.035); transition: transform .2s ease, border-color .2s ease, box-shadow .2s ease; }
+  .intake-care-option h2 { margin-top: 1.5rem; color: #112b3c; font-size: 1.18rem; font-weight: 800; letter-spacing: -.03em; }
+  .intake-care-option p { margin-top: .65rem; color: #64748b; font-size: .88rem; line-height: 1.6; }
+  .intake-care-option:hover { transform: translateY(-3px); border-color: #75c3df; box-shadow: 0 16px 28px rgba(17,43,60,.09); }
+  .intake-option { display: flex; align-items: center; gap: .85rem; width: 100%; border: 1px solid #d4e7ef; border-radius: 1rem; background: rgba(255,255,255,.72); padding: 1rem 1.1rem; color: #233f50; font-size: .95rem; font-weight: 650; transition: border-color .2s ease, background .2s ease, transform .2s ease; }
+  .intake-option:hover { border-color: #75c3df; background: #f0faff; }
+  .intake-option--selected { border-color: #0b6e9d; background: #e7f6fd; color: #07577f; }
+  .intake-radio { display: flex; height: 1.25rem; width: 1.25rem; flex: 0 0 auto; align-items: center; justify-content: center; border: 1.5px solid #9dc9da; border-radius: 999px; color: white; font-size: .7rem; }
+  .intake-option--selected .intake-radio { border-color: #0b6e9d; background: #0b6e9d; }
+  .intake-check { display: flex; height: 3.5rem; width: 3.5rem; align-items: center; justify-content: center; border-radius: 999px; background: #e1f6fd; color: #08719f; font-size: 1.75rem; font-weight: 800; }
 
   .auth-experience { display: grid; gap: 1.25rem; align-items: stretch; }
   .auth-aside { min-height: 440px; background: #103a55; box-shadow: 0 24px 56px rgba(16, 58, 85, 0.2); }
