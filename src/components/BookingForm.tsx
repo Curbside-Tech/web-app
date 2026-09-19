@@ -1,26 +1,61 @@
-import React from 'react';
+import { useState } from 'react';
+import { useSearchParams, useLocation } from 'react-router-dom';
+import { treatments } from '../data/treatments';
 
-export const BookingForm: React.FC = () => {
+export default function BookingPage() {
+  const [searchParams] = useSearchParams();
+  const location = useLocation();
+  const [isLoading, setIsLoading] = useState(true);
+
+  // Extract treatment ID from query string, router state object, or direct state value
+  const treatmentId =
+    searchParams.get('treatment') ||
+    location.state?.treatment?.id ||
+    location.state?.treatmentId;
+
+  const selectedTreatment = treatments.find((t) => t.id === treatmentId);
+
+  const iframeUrl = selectedTreatment?.healthieUrl;
+
   return (
-    <div style={{ width: '100%', maxWidth: '800px', margin: '0 auto' }}>
-      <iframe
-        src="https://securestaging.gethealthie.com/appointments/embed_appt?dietitian_id=6590487&embed_form_id=2391153&form_only=true&primary_color=c252b4"
-        style={{
-          width: '100%',
-          height: '100%',
-          minHeight: '600px',
-          border: 'none', // FIXED: replaced '0px' with 'none'
-        }}
-        title="Healthie Booking Form"
-      />
-      <p style={{ textAlign: 'center', marginTop: '10px' }}>
+    <div className="w-full max-w-4xl mx-auto p-4">
+      <h2 className="text-xl font-bold mb-4 text-center text-slate-800">
+        {selectedTreatment ? `Booking: ${selectedTreatment.name}` : 'Book Consultation'}
+      </h2>
+
+      <div className="relative w-full min-h-[600px] rounded-lg overflow-hidden border border-gray-100 shadow-sm">
+        {/* Loading Spinner */}
+        {isLoading && (
+          <div className="absolute inset-0 flex items-center justify-center bg-gray-50 z-10">
+            <div className="animate-spin rounded-full h-10 w-10 border-b-2 border-teal-600"></div>
+          </div>
+        )}
+
+        <iframe
+          key={iframeUrl}
+          src={iframeUrl}
+          onLoad={() => setIsLoading(false)}
+          style={{
+            width: '100%',
+            height: '100%',
+            minHeight: '600px',
+            border: 'none',
+          }}
+          title={`${selectedTreatment?.name || 'Healthie'} Booking Form`}
+        />
+      </div>
+
+      <p className="text-center mt-3 text-sm text-gray-500">
         Booking Provided by{' '}
-        <a href="https://gethealthie.com" target="_blank" rel="noopener noreferrer">
+        <a
+          href="https://gethealthie.com"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="underline hover:text-gray-700 transition-colors"
+        >
           Healthie
         </a>
       </p>
     </div>
   );
-};
-
-export default BookingForm;
+}

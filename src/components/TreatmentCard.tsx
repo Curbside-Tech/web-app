@@ -35,10 +35,11 @@ export default function TreatmentCard({ treatment }: TreatmentCardProps) {
         {treatment.description}
       </p>
 
+      {/* Direct users to the booking page with treatment details passed via state */}
       <Link
-        to="/sign-up"
+        to={`/booking?treatment=${treatment.id}`}
         className="btn-primary mt-5 w-full text-center"
-        state={{ treatmentId: treatment.id }}
+        state={{ treatment }}
       >
         Start visit
       </Link>

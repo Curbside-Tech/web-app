@@ -6,6 +6,7 @@ export interface Treatment {
   description: string;
   mode: TreatmentMode;
   subscriptionRequired: boolean;
+  healthieUrl: string; // Add this property to store the Healthie form URL
 }
 
 export interface FaqItem {
