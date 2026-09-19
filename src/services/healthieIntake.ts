@@ -6,11 +6,15 @@ export type HealthieIntakePayload = {
 };
 
 export async function connectIntakeToHealthie(payload: HealthieIntakePayload) {
-  const response = await fetch('/api/healthie-intake', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) });
-  const result = await response.json() as { redirectUrl?: string; message?: string };
-  if (response.ok && result.redirectUrl) return window.location.assign(result.redirectUrl);
-  // Allows a temporary direct handoff before the provider-side API connection is configured.
-  // This cannot create or connect a patient record; it only opens the configured Healthie sign-in destination.
-  const fallback = import.meta.env.VITE_HEALTHIE_SIGN_IN_URL || 'https://www.gethealthie.com/';
-  window.location.assign(fallback);
+  let response: Response;
+  try {
+    response = await fetch('/api/healthie-intake', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) });
+  } catch {
+    throw new Error('The local Healthie server route is unavailable. Restart the app with npm run dev.');
+  }
+  const contentType = response.headers.get('content-type') ?? '';
+  const result = contentType.includes('application/json') ? await response.json() as { redirectUrl?: string; message?: string } : null;
+  if (response.ok && result?.redirectUrl) return window.location.assign(result.redirectUrl);
+  if (result?.message) throw new Error(result.message);
+  throw new Error('Your secure Healthie connection is unavailable. Please contact the care team or try again shortly.');
 }

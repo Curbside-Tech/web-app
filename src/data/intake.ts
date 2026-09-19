@@ -3,7 +3,7 @@ export type IntakeQuestion = {
   section: string;
   prompt: string;
   helpText?: string;
-  type: 'single' | 'multi' | 'text' | 'number';
+  type: 'single' | 'multi' | 'text' | 'number' | 'date';
   options?: string[];
   required?: boolean;
   showWhen?: { questionId: string; includes: string };
@@ -30,6 +30,7 @@ export const intakeQuestions: IntakeQuestion[] = [
   { id: 'medication-details', section: 'Safety check', prompt: 'Please list the medicines or supplements you take.', type: 'text', showWhen: { questionId: 'medications', includes: 'Yes' }, required: true },
   { id: 'allergies', section: 'Safety check', prompt: 'Do you have medication allergies or past reactions?', type: 'single', options: ['Yes', 'No', 'Not sure'], required: true },
   { id: 'red-flags', section: 'Safety check', prompt: 'Are you experiencing any of these symptoms right now?', helpText: 'Choose all that apply. If you have a medical emergency, call 911.', type: 'multi', options: ['Trouble breathing', 'Chest pain', 'Fainting', 'Thoughts of self-harm', 'None of these'], required: true },
+  { id: 'dateOfBirth', section: 'Your secure account', prompt: 'What is your date of birth?', type: 'date', required: true },
   { id: 'firstName', section: 'Your secure account', prompt: 'What is your first name?', type: 'text', required: true },
   { id: 'lastName', section: 'Your secure account', prompt: 'What is your last name?', type: 'text', required: true },
   { id: 'email', section: 'Your secure account', prompt: 'What is your email address?', helpText: 'This is the last step before we securely connect you to Healthie.', type: 'text', required: true },
