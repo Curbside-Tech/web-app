@@ -9,10 +9,16 @@ interface TreatmentCardProps {
 
 export default function TreatmentCard({ treatment }: TreatmentCardProps) {
   const isVideo = treatment.mode === 'video';
+  const careLabels: Record<string, string> = {
+    uti: 'Urinary health',
+    uri: 'Everyday respiratory care',
+    'sti-exposure': 'Private sexual health',
+  };
 
   return (
-    <GlassCard interactive accent padding="md" className="flex flex-col">
-      <div className="mb-4 flex flex-wrap gap-2">
+    <GlassCard interactive accent padding="md" className={`treatment-card treatment-card--${treatment.id} flex flex-col`}>
+      <div className="treatment-card-orbit" aria-hidden="true"><i /><i /><span>✦</span></div>
+      <div className="treatment-card-top">
         <span
           className={`inline-flex items-center gap-1 rounded-full px-2.5 py-1 text-xs font-semibold ${
             isVideo
@@ -29,16 +35,18 @@ export default function TreatmentCard({ treatment }: TreatmentCardProps) {
           </span>
         )}
       </div>
-
-      <h3 className="text-base font-bold text-slate-deep">{treatment.name}</h3>
-      <p className="mt-2 flex-1 text-sm leading-relaxed text-slate-500">
+      <p className="treatment-card-kicker">{careLabels[treatment.id] ?? 'Curbside care'}</p>
+      <h3 className="treatment-card-title">{treatment.name}</h3>
+      <p className="treatment-card-description">
         {treatment.description}
       </p>
 
+      <div className="treatment-card-meta"><span>Private intake</span><i /> <span>Clinician review</span></div>
+
       {/* Direct users to the booking page with treatment details passed via state */}
       <Link
-        to={`/booking?treatment=${treatment.id}`}
-        className="btn-primary mt-5 w-full text-center"
+        to={`/treatment-questionnaire?treatment=${treatment.id}`}
+        className="treatment-card-button"
         state={{ treatment }}
       >
         Start visit
