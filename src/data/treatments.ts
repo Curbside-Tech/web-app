@@ -19,7 +19,7 @@ export const treatments: Treatment[] = [
     healthieUrl: 'https://securestaging.gethealthie.com/appointments/embed_appt?dietitian_id=6590487&embed_form_id=2391968&form_only=true&primary_color=4A9625'
   },
   {
-    id: 'sti-exposure',
+    id: 'sti',
     name: 'STI Exposure',
     description: 'Screening and triage for recent STI exposure, discharge, and asymptomatic testing.',
     mode: 'async',

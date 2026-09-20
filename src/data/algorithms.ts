@@ -24,7 +24,7 @@ export const ALGORITHMS: Record<string, TreatmentAlgorithm> = {
     id: 'uti',
     name: 'Urinary Tract Infection',
     healthieUrl:
-      'https://securestaging.gethealthie.com/appointments/embed_appt?dietitian_id=6590487&embed_form_id=2391965&form_only=true&primary_color=4A9625',
+      'https://securestaging.gethealthie.com/appointments/embed_appt?dietitian_id=6590487&embed_form_id=2391967&form_only=true&primary_color=4A9625',
     startQuestionId: 'q1',
     questions: {
       q1: {
@@ -123,7 +123,7 @@ export const ALGORITHMS: Record<string, TreatmentAlgorithm> = {
     id: 'sti',
     name: 'STI Exposure & Screening',
     healthieUrl:
-      'https://securestaging.gethealthie.com/appointments/embed_appt?dietitian_id=6590487&embed_form_id=2391153&form_only=true&primary_color=c252b4',
+      'https://securestaging.gethealthie.com/appointments/embed_appt?dietitian_id=6590487&embed_form_id=2391969&form_only=true&primary_color=4A9625',
     startQuestionId: 'q1',
     questions: {
       q1: {
@@ -155,19 +155,13 @@ export const ALGORITHMS: Record<string, TreatmentAlgorithm> = {
       },
       q3: {
         id: 'q3',
-        text: '3. Have you recently been treated for an STD and symptoms have not improved?',
+        text: '3. Have you recently been treated for an STD and if so, has the infection not resolved?',
         type: 'button',
         options: [
           { label: 'YES', nextStep: 'er' },
-          { label: 'NO', nextStep: 'q4' },
+          { label: 'NO', nextStep: 'form' },
         ],
-      },
-      q4: {
-        id: 'q4',
-        text: '4. Please describe the color or nature of any discharge (or type "None"):',
-        type: 'text',
-        options: [{ label: 'SUBMIT', nextStep: 'form' }],
-      },
+      }
     },
   },
 
@@ -176,27 +170,18 @@ export const ALGORITHMS: Record<string, TreatmentAlgorithm> = {
     id: 'uri',
     name: 'Upper Respiratory Infection',
     healthieUrl:
-      'https://securestaging.gethealthie.com/appointments/embed_appt?dietitian_id=6590487&embed_form_id=2391153&form_only=true&primary_color=3B82F6',
+      'https://securestaging.gethealthie.com/appointments/embed_appt?dietitian_id=6590487&embed_form_id=2391968&form_only=true&primary_color=4A9625',
     startQuestionId: 'q1',
     questions: {
       q1: {
         id: 'q1',
-        text: '1. Are you experiencing severe shortness of breath or chest tightness?',
-        type: 'button',
-        options: [
-          { label: 'YES', nextStep: 'er' },
-          { label: 'NO', nextStep: 'q2' },
-        ],
-      },
-      q2: {
-        id: 'q2',
-        text: '2. Has your fever lasted longer than 5 days or is above 103°F?',
+        text: '1. Do any of the following apply? (Shortness of breath, Coughing blood, Chest pain)',
         type: 'button',
         options: [
           { label: 'YES', nextStep: 'er' },
           { label: 'NO', nextStep: 'form' },
         ],
-      },
+      }
     },
   },
 };
