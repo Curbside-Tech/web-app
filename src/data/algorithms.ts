@@ -48,22 +48,22 @@ export const ALGORITHMS: Record<string, TreatmentAlgorithm> = {
       // --- REPLACED INFORMAL LANGUAGE WITH OPTION A / OPTION B ---
       q2_feel: {
         id: 'q2_feel',
-        text: 'Please select the statement that best matches your current symptoms:',
+        text: 'Does this feel like your previous kidney stones?',
         type: 'button',
         options: [
           {
-            label: 'Option A: My current symptoms are similar to my previous kidney stones',
+            label: 'YES',
             nextStep: 'q2_surg',
           },
           {
-            label: 'Option B: My current symptoms are different from my previous kidney stones',
+            label: 'No',
             nextStep: 'q3',
           },
         ],
       },
       q2_surg: {
         id: 'q2_surg',
-        text: 'Have you ever required surgery or medical procedures for your kidney stones?',
+        text: 'Have you ever required surgery/procedures for your kidney stone?',
         type: 'button',
         options: [
           { label: 'YES', nextStep: 'er' },
@@ -90,7 +90,7 @@ export const ALGORITHMS: Record<string, TreatmentAlgorithm> = {
       },
       q4: {
         id: 'q4',
-        text: '4. Do you have a history of growing drug-resistant organisms?',
+        text: '4. Do you have a history of growing drug resistance organisms?',
         type: 'button',
         options: [
           { label: 'YES', nextStep: 'er' },
@@ -103,18 +103,9 @@ export const ALGORITHMS: Record<string, TreatmentAlgorithm> = {
         type: 'button',
         options: [
           { label: 'YES', nextStep: 'er' },
-          { label: 'NO', nextStep: 'q5' },
-        ],
-      },
-      q5: {
-        id: 'q5',
-        text: '5. Are you experiencing severe fever, chills, or mid-back pain near your kidneys?',
-        type: 'button',
-        options: [
-          { label: 'YES', nextStep: 'er' },
           { label: 'NO', nextStep: 'form' },
         ],
-      },
+      }
     },
   },
 

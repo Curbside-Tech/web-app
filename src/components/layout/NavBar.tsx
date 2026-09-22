@@ -10,8 +10,7 @@ const navLinks = [
   { to: '/how-it-works', label: 'How it works' },
   { to: '/treatments', label: 'Treatments' },
   { to: '/about', label: 'About' },
-  { to: '/contact', label: 'Contact' },
-  { to: '/booking', label: 'Booking Form' },
+  { to: '/contact', label: 'Contact' }
 ];
 
 export default function NavBar({ onNavigate }: NavBarProps) {
@@ -41,10 +40,10 @@ export default function NavBar({ onNavigate }: NavBarProps) {
             ))}
           </div>
 
-          <div className="hidden items-center gap-2 sm:flex sm:gap-2.5">
+          {/* <div className="hidden items-center gap-2 sm:flex sm:gap-2.5">
             <Link to="/sign-in" onClick={closeMenu} className="btn-secondary px-4 py-2 text-xs sm:px-5 sm:text-sm">Sign in</Link>
             <Link to="/sign-up" onClick={closeMenu} className="btn-primary px-4 py-2 text-xs sm:px-5 sm:text-sm">Sign up</Link>
-          </div>
+          </div> */}
 
           <button type="button" onClick={() => setIsOpen((open) => !open)} className="flex h-10 w-10 items-center justify-center rounded-xl text-slate-700 transition-colors hover:bg-teal-50 md:hidden" aria-label={isOpen ? 'Close navigation menu' : 'Open navigation menu'} aria-expanded={isOpen}>
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="h-5 w-5" aria-hidden="true">
