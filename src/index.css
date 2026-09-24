@@ -368,4 +368,156 @@
   @media (prefers-reduced-motion: no-preference) {
     .hero-button:hover { transform: translateY(-2px); }
   }
+
+  /* Treatment questionnaire — a focused Curbside experience layered over the
+     existing page background. It deliberately leaves triage logic untouched. */
+  .triage-page { min-height: 100%; padding: 1.5rem 0 4rem; }
+  .triage-shell { width: min(100% - 2rem, 56rem); margin: 0 auto; }
+  .triage-nav { display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem; }
+  .triage-nav-button { display: inline-flex; align-items: center; gap: .45rem; color: #577488; font-size: .79rem; font-weight: 800; transition: color .2s ease, transform .2s ease; }
+  .triage-nav-button:hover { color: #0b6e9d; transform: translateX(-2px); }
+  .triage-nav-button:last-child:hover { transform: translateX(2px); }
+  .triage-hero { position: relative; display: grid; grid-template-columns: minmax(0, 1fr) 12rem; gap: 1.5rem; min-height: 15rem; overflow: hidden; border-radius: 2rem 2rem 0 0; padding: clamp(2rem, 5vw, 3.5rem); background: #103a55; box-shadow: 0 25px 60px rgba(18, 59, 86, .18); }
+  .triage-hero::before { position: absolute; inset: 0; background: radial-gradient(circle at 87% 24%, rgba(125,211,252,.25), transparent 25%), radial-gradient(circle at 56% 112%, rgba(56,189,248,.17), transparent 34%); content: ""; }
+  .triage-hero-copy { position: relative; z-index: 1; }.triage-hero-copy p { color: #bae6fd; font-size: .67rem; font-weight: 800; letter-spacing: .17em; text-transform: uppercase; }.triage-hero-copy h1 { margin-top: .85rem; color: #fff; font-size: clamp(2.25rem, 5vw, 3.7rem); font-weight: 800; letter-spacing: -.075em; line-height: .96; }.triage-hero-copy span { display: block; max-width: 31rem; margin-top: 1.15rem; color: rgba(255,255,255,.74); font-size: .91rem; line-height: 1.65; }
+  .triage-hero-mark { position: relative; z-index: 1; align-self: center; justify-self: center; width: 9rem; height: 9rem; }.triage-hero-mark i { position: absolute; border: 1px solid rgba(186,230,253,.44); border-radius: 50%; }.triage-hero-mark i:first-child { inset: 0; }.triage-hero-mark i:nth-child(2) { inset: 1.5rem; border-color: rgba(255,255,255,.22); }.triage-hero-mark b { position: absolute; inset: 3.25rem; display: grid; place-items: center; border-radius: 1rem; color: #103a55; background: #bae6fd; font-size: .95rem; transform: rotate(12deg); }
+  .triage-card { position: relative; z-index: 2; margin: -1.6rem 1.25rem 0; overflow: hidden; border: 1px solid rgba(11,110,157,.14); border-radius: 1.5rem; background: rgba(255,255,255,.95); box-shadow: 0 22px 50px rgba(17,43,60,.11); backdrop-filter: blur(10px); }.triage-progress-track { height: .35rem; background: #dcecf3; }.triage-progress-value { height: 100%; border-radius: 0 99px 99px 0; background: linear-gradient(90deg,#0b6e9d,#38bdf8); transition: width .35s ease; }.triage-content { padding: clamp(1.5rem, 4vw, 3rem); }.triage-card-header { display: flex; align-items: start; justify-content: space-between; gap: 1rem; }.triage-kicker { color: #0b6e9d; font-size: .66rem; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; }.triage-card-header p { margin-top: .3rem; color: #6a8595; font-size: .8rem; font-weight: 600; }.triage-step-count { border-radius: 999px; padding: .42rem .7rem; color: #174b66; font-size: .7rem; font-weight: 800; background: #e7f6fd; white-space: nowrap; }
+  .triage-question-state { position: relative; padding-top: 3rem; }.triage-question-number { display: grid; width: 3rem; height: 3rem; place-items: center; border-radius: .9rem; color: #0b6e9d; font-size: .78rem; font-weight: 800; background: #e8f7fc; }.triage-question-state h3 { max-width: 42rem; margin-top: 1rem; color: #112b3c; font-size: clamp(1.45rem, 3.4vw, 2.25rem); font-weight: 800; letter-spacing: -.055em; line-height: 1.16; }.triage-options { display: grid; gap: .75rem; margin-top: 2rem; }.triage-option { display: grid; grid-template-columns: 2rem 1fr auto; align-items: center; gap: .85rem; width: 100%; border: 1px solid #d5e7ee; border-radius: 1rem; padding: .95rem 1rem; color: #294355; font-size: .92rem; font-weight: 700; text-align: left; background: #fff; transition: transform .2s ease, border-color .2s ease, background .2s ease, box-shadow .2s ease; }.triage-option:hover { transform: translateY(-2px); border-color: #5bb9df; color: #103a55; background: #f3fbfe; box-shadow: 0 10px 22px rgba(11,110,157,.1); }.triage-option-letter { display: grid; width: 2rem; height: 2rem; place-items: center; border: 1px solid #b7d5e2; border-radius: .65rem; color: #63869a; font-size: .68rem; }.triage-option-arrow { width: 1.1rem; height: 1.1rem; color: #0b6e9d; transition: transform .2s ease; }.triage-option:hover .triage-option-arrow { transform: translateX(3px); }
+  .triage-text-form { display: grid; gap: .85rem; margin-top: 2rem; }.triage-text-input { width: 100%; border: 1px solid #cfe2eb; border-radius: 1rem; padding: 1rem; color: #112b3c; outline: none; background: #fff; transition: border-color .2s ease, box-shadow .2s ease; }.triage-text-input:focus { border-color: #0b6e9d; box-shadow: 0 0 0 4px rgba(56,189,248,.16); }.triage-primary-button, .triage-secondary-button { display: inline-flex; align-items: center; justify-content: center; min-height: 3rem; border-radius: .9rem; padding: .75rem 1.15rem; font-size: .83rem; font-weight: 800; transition: transform .2s ease, background .2s ease, box-shadow .2s ease; }.triage-primary-button { color: #fff; background: #0b6e9d; box-shadow: 0 10px 20px rgba(11,110,157,.22); }.triage-primary-button:hover { transform: translateY(-2px); background: #07577f; box-shadow: 0 15px 24px rgba(7,87,127,.28); }.triage-secondary-button { border: 1px solid #cfe2eb; color: #496a7e; background: #fff; }.triage-secondary-button:hover { background: #f3fbfe; }.triage-text-continue { width: 100%; }
+  .triage-emergency { max-width: 38rem; margin: 3rem auto 1rem; text-align: center; }.triage-emergency-icon { display: grid; width: 4.1rem; height: 4.1rem; place-items: center; margin: 0 auto; border-radius: 1.2rem; color: #b91c1c; font-size: 1.9rem; font-weight: 800; background: #fee2e2; }.triage-emergency > span { display: block; margin-top: 1.25rem; color: #b91c1c; font-size: .66rem; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; }.triage-emergency h3 { margin-top: .6rem; color: #450a0a; font-size: clamp(1.6rem, 3vw, 2rem); font-weight: 800; letter-spacing: -.05em; }.triage-emergency p { margin: 1rem auto 1.5rem; color: #7f1d1d; font-size: .9rem; line-height: 1.65; }
+  .triage-form-state { margin-top: 2.25rem; }.triage-complete-note { display: flex; align-items: center; gap: .75rem; border: 1px solid #b8e6f8; border-radius: 1rem; padding: 1rem; color: #174b66; font-size: .84rem; background: #e7f6fd; }.triage-complete-note svg { width: 1.4rem; height: 1.4rem; flex: 0 0 auto; color: #0b6e9d; }.triage-embed-frame { min-height: 38.75rem; margin-top: 1.25rem; overflow: hidden; border: 1px solid #d5e8f0; border-radius: 1rem; background: #fff; }.triage-post-form { margin-top: 1.25rem; border-top: 1px solid #dcebf1; padding-top: 1.25rem; text-align: center; }.triage-post-form > p { color: #738c9c; font-size: .75rem; font-weight: 700; }.triage-post-form > div { display: flex; justify-content: center; flex-wrap: wrap; gap: .75rem; margin-top: .85rem; }.triage-privacy { margin: 1.25rem 0 0; color: #708897; font-size: .7rem; text-align: center; }
+  @media (max-width: 640px) { .triage-page { padding-top: .75rem; }.triage-shell { width: min(100% - 1.25rem, 56rem); }.triage-hero { grid-template-columns: minmax(0,1fr) 7rem; min-height: 16.5rem; padding: 1.6rem; }.triage-hero-copy h1 { font-size: 2.35rem; }.triage-hero-mark { width: 6.25rem; height: 6.25rem; }.triage-hero-mark i:nth-child(2) { inset: 1.05rem; }.triage-hero-mark b { inset: 2.25rem; }.triage-card { margin: -1.05rem .4rem 0; border-radius: 1.25rem; }.triage-content { padding: 1.35rem; }.triage-question-state { padding-top: 2.2rem; }.triage-question-state h3 { font-size: 1.55rem; }.triage-option { padding: .9rem; }.triage-embed-frame { min-height: 42rem; } }
+
+  /* The three care paths share Curbside's blue system but each gets its own
+     visual rhythm, so no two intakes feel like a copied screen. */
+  .triage-page--uti .triage-hero-mark b { border-radius: 1rem; transform: rotate(12deg); }
+  .triage-page--uri .triage-hero { background: linear-gradient(118deg, #174b66, #0b6e9d); }.triage-page--uri .triage-hero::before { background: radial-gradient(circle at 84% 17%, rgba(224,247,255,.34), transparent 23%), radial-gradient(circle at 38% 110%, rgba(125,211,252,.22), transparent 34%); }.triage-page--uri .triage-hero-mark i:first-child { border-style: dashed; }.triage-page--uri .triage-hero-mark b { border-radius: 50%; transform: none; }.triage-page--uri .triage-card { margin-left: 2.4rem; margin-right: .45rem; }.triage-page--uri .triage-progress-value { background: linear-gradient(90deg, #38bdf8, #e0f7ff); }
+  .triage-page--sti .triage-hero { background: linear-gradient(135deg, #103a55, #174b66); }.triage-page--sti .triage-hero::before { background: radial-gradient(circle at 84% 21%, rgba(186,230,253,.22), transparent 22%), linear-gradient(115deg, transparent 58%, rgba(56,189,248,.09)); }.triage-page--sti .triage-hero-mark i:first-child { border-radius: 1.7rem; transform: rotate(45deg); }.triage-page--sti .triage-hero-mark i:nth-child(2) { border-radius: .9rem; transform: rotate(45deg); }.triage-page--sti .triage-hero-mark b { border-radius: .45rem; transform: rotate(45deg); }.triage-page--sti .triage-hero-mark b::first-letter { display: inline-block; transform: rotate(-45deg); }.triage-page--sti .triage-card { margin-right: 2.4rem; margin-left: .45rem; }.triage-page--sti .triage-question-number { border-radius: 50%; }
+
+  /* Larger treatment cards create a more deliberate selection moment. */
+  .treatment-card { position: relative; min-height: 25rem; overflow: hidden; border-radius: 1.6rem; padding: 2rem !important; background: rgba(255,255,255,.86); }.treatment-card::before { height: 4px; background: linear-gradient(90deg,#38bdf8,#bae6fd 60%,transparent); }.treatment-card-top { position:relative;z-index:1;display:flex;flex-wrap:wrap;gap:.5rem; }.treatment-card-kicker { position:relative;z-index:1;margin-top:3rem;color:#0b6e9d;font-size:.7rem;font-weight:800;letter-spacing:.13em;text-transform:uppercase; }.treatment-card-title { position:relative;z-index:1;max-width:17rem;margin-top:.75rem;color:#112b3c;font-size:clamp(1.35rem,2vw,1.7rem);font-weight:800;letter-spacing:-.055em;line-height:1.12; }.treatment-card-description { position:relative;z-index:1;max-width:19rem;margin-top:1rem;color:#64748b;font-size:.92rem;line-height:1.65; }.treatment-card-meta { position:relative;z-index:1;display:flex;align-items:center;gap:.55rem;margin-top:auto;padding-top:1.8rem;color:#628095;font-size:.7rem;font-weight:700; }.treatment-card-meta i { display:block;width:.26rem;height:.26rem;border-radius:50%;background:#38bdf8; }.treatment-card-button { position:relative;z-index:1;display:inline-flex;align-items:center;justify-content:center;min-height:3.35rem;margin-top:1rem;border-radius:1rem;color:white;font-size:.9rem;font-weight:800;background:#0b6e9d;box-shadow:0 12px 22px rgba(11,110,157,.23);transition:transform .2s ease,background .2s ease,box-shadow .2s ease; }.treatment-card-button:hover { transform:translateY(-2px);background:#07577f;box-shadow:0 17px 28px rgba(11,110,157,.3); }.treatment-card-orbit { position:absolute;right:1.35rem;top:2.5rem;width:7rem;height:7rem;opacity:.82; }.treatment-card-orbit i { position:absolute;border:1px solid rgba(56,189,248,.28);border-radius:50%; }.treatment-card-orbit i:first-child { inset:0; }.treatment-card-orbit i:nth-child(2) { inset:1.1rem;border-color:rgba(11,110,157,.18); }.treatment-card-orbit span { position:absolute;left:2.45rem;top:2.45rem;display:grid;width:2.15rem;height:2.15rem;place-items:center;border-radius:.72rem;color:#103a55;background:#bae6fd;font-size:.74rem;transform:rotate(10deg); }.treatment-card--uri .treatment-card-orbit span { border-radius:50%; }.treatment-card--sti .treatment-card-orbit span { border-radius:.3rem;transform:rotate(45deg);color:transparent; }.treatment-card--sti .treatment-card-orbit span::after { color:#103a55;content:"✦";transform:rotate(-45deg); }
+  @media (max-width:640px) { .triage-page--uri .triage-card, .triage-page--sti .triage-card { margin-left:.4rem; margin-right:.4rem; }.treatment-card { min-height:22rem;padding:1.5rem !important; }.treatment-card-kicker { margin-top:2.5rem; }.treatment-card-title { max-width:15rem; } }
+
+  /* Design refresh — a calm care journey rather than a large promotional
+     block. The visual language is shared with the Curbside home page. */
+  .triage-page { padding-top: .75rem; }.triage-shell { width: min(100% - 2rem, 64rem); }.triage-hero { grid-template-columns: minmax(0, 1fr) 10rem; min-height: auto; margin: .75rem 0 1.15rem; border: 1px solid rgba(11,110,157,.13); border-radius: 1.7rem; padding: clamp(1.6rem,4vw,2.5rem); color: #112b3c; background: rgba(255,255,255,.7); box-shadow: none; }.triage-hero::before { background: radial-gradient(circle at 94% 34%, rgba(186,230,253,.68), transparent 23%), radial-gradient(circle at 66% 100%, rgba(224,247,255,.75), transparent 31%); }.triage-hero-copy p { color: #0b6e9d; }.triage-hero-copy h1 { max-width: 36rem; margin-top: .65rem; color: #112b3c; font-size: clamp(2rem,4vw,3.2rem); line-height: 1.02; }.triage-hero-copy span { max-width: 36rem; margin-top: .8rem; color: #61798a; }.triage-hero-mark { width: 7.5rem; height: 7.5rem; }.triage-hero-mark i:first-child { border-color: rgba(11,110,157,.25); }.triage-hero-mark i:nth-child(2) { border-color: rgba(56,189,248,.36); }.triage-hero-mark b { color:#103a55;background:#bae6fd; }
+  .triage-page--uri .triage-hero, .triage-page--sti .triage-hero { margin-left:0; margin-right:0; background:rgba(255,255,255,.7); }.triage-page--uri .triage-hero::before { background:radial-gradient(circle at 92% 28%,rgba(186,230,253,.72),transparent 24%),linear-gradient(90deg,transparent 55%,rgba(224,247,255,.65)); }.triage-page--sti .triage-hero::before { background:radial-gradient(circle at 92% 28%,rgba(207,238,253,.72),transparent 24%),linear-gradient(90deg,transparent 55%,rgba(231,246,253,.7)); }
+  .triage-card { display: grid; grid-template-columns: 15.5rem minmax(0,1fr); margin: 0; overflow: hidden; border: 1px solid rgba(11,110,157,.13); border-radius: 1.7rem; background: rgba(255,255,255,.92); box-shadow: 0 20px 42px rgba(17,43,60,.08); }.triage-page--uri .triage-card, .triage-page--sti .triage-card { margin-left:0; margin-right:0; }.triage-rail { display:flex; flex-direction:column; min-height: 38rem; padding: 1.8rem; color: #eaf7fc; background: #103a55; }.triage-rail-brand { font-size:.66rem;font-weight:800;letter-spacing:.18em; }.triage-rail-icon { display:grid;width:3rem;height:3rem;place-items:center;margin-top:3rem;border-radius:1rem;color:#103a55;background:#bae6fd;font-size:.9rem; }.triage-rail > p { margin-top:1.25rem;color:#fff;font-size:.95rem;font-weight:800; }.triage-rail ol { display:grid;gap:1.35rem;margin-top:2rem; }.triage-rail li { display:grid;grid-template-columns:1.7rem 1fr;align-items:center;gap:.65rem;color:rgba(255,255,255,.55);font-size:.72rem;font-weight:700; }.triage-rail li b { display:grid;width:1.7rem;height:1.7rem;place-items:center;border:1px solid rgba(186,230,253,.33);border-radius:.5rem;font-size:.61rem; }.triage-rail li.is-active { color:#fff; }.triage-rail li.is-active b { border-color:#38bdf8;color:#103a55;background:#bae6fd; }.triage-rail small { margin-top:auto;color:rgba(255,255,255,.55);font-size:.66rem;font-weight:700; }
+  .triage-main { min-width:0; }.triage-progress-track { height:.38rem;background:#dcecf3; }.triage-content { padding:clamp(1.5rem,4vw,3rem); }.triage-card-header { padding-bottom:1.6rem;border-bottom:1px solid #dceaf0; }.triage-question-state { padding-top:2.2rem; }.triage-question-number { border-radius:50%; }.triage-question-state h3 { max-width: 39rem; font-size: clamp(1.6rem,3.4vw,2.35rem); }.triage-options { max-width: 42rem; }.triage-option { grid-template-columns:2rem 1fr auto;min-height:4rem;border-radius:.9rem; }.triage-option-letter { border-radius:50%; }.triage-privacy { margin-top:1rem; }
+  .treatment-card { min-height: 27rem; padding: 0 !important; background: rgba(255,255,255,.92); }.treatment-card::before { height: 3px; }.treatment-card-top, .treatment-card-kicker, .treatment-card-title, .treatment-card-description, .treatment-card-meta, .treatment-card-button { margin-left: 1.75rem; margin-right: 1.75rem; }.treatment-card-top { margin-top: 1.55rem; }.treatment-card-kicker { margin-top: 2.2rem; }.treatment-card-title { font-size: clamp(1.45rem,2.2vw,1.82rem); }.treatment-card-description { font-size:.95rem; }.treatment-card-meta { padding-top:1.3rem; }.treatment-card-button { margin-bottom:1.7rem; }.treatment-card-visual { position:absolute;right:1.55rem;top:1.15rem;width:7rem;height:7rem; }.treatment-card-visual i { position:absolute;border:1px solid rgba(56,189,248,.28);border-radius:50%; }.treatment-card-visual i:first-child { inset:0; }.treatment-card-visual i:nth-child(2) { inset:1.1rem;border-color:rgba(11,110,157,.18); }.treatment-card-visual span { position:absolute;left:2.45rem;top:2.45rem;display:grid;width:2.15rem;height:2.15rem;place-items:center;border-radius:.72rem;color:#103a55;background:#bae6fd;font-size:.74rem;transform:rotate(10deg); }.treatment-card--uri .treatment-card-visual span { border-radius:50%; }.treatment-card--sti .treatment-card-visual span { border-radius:.3rem;transform:rotate(45deg);color:transparent; }.treatment-card--sti .treatment-card-visual span::after { color:#103a55;content:"✦";transform:rotate(-45deg); }
+  @media (max-width: 760px) { .triage-card { grid-template-columns:1fr; }.triage-rail { min-height: auto; display:grid; grid-template-columns:auto 1fr; align-items:center; column-gap:1rem; padding:1.1rem 1.35rem; }.triage-rail-icon, .triage-rail > p, .triage-rail small { display:none; }.triage-rail ol { display:flex;gap:.85rem;margin:0; }.triage-rail li { display:block; }.triage-rail li span { display:none; }.triage-hero { grid-template-columns:minmax(0,1fr) 7rem; }.triage-hero-copy h1 { font-size:2.15rem; }.triage-hero-mark { width:5.8rem;height:5.8rem; }.triage-hero-mark i:nth-child(2) { inset:1rem; }.triage-hero-mark b { inset:2rem; }.treatment-card { min-height:24rem; }.treatment-card-top, .treatment-card-kicker, .treatment-card-title, .treatment-card-description, .treatment-card-meta, .treatment-card-button { margin-left:1.4rem;margin-right:1.4rem; } }
+
+  /* Figma care-journey refinement: a quiet, editorial selection surface and
+     a focused clinical check-in rather than decorative, floating UI. */
+  .triage-page { padding: 1.25rem 0 5rem; }
+  .triage-shell { width: min(100% - 2.5rem, 68rem); }
+  .triage-nav { margin-bottom: 1.25rem; }
+  .triage-nav-button { min-height: 2.8rem; border: 1px solid rgba(255,255,255,.72); border-radius: 999px; padding: 0 .95rem; color: #416a83; background: linear-gradient(135deg, rgba(255,255,255,.75), rgba(231,246,253,.48)); box-shadow: 0 10px 24px rgba(24, 86, 115, .1), inset 0 1px 0 rgba(255,255,255,.9); backdrop-filter: blur(18px) saturate(135%); -webkit-backdrop-filter: blur(18px) saturate(135%); }
+  .triage-nav-button svg { display: grid; width: 1.25rem; height: 1.25rem; place-items: center; border-radius: 50%; padding: .18rem; color: #0876aa; background: rgba(255,255,255,.72); box-shadow: inset 0 0 0 1px rgba(11,110,157,.09); }
+  .triage-nav-button:hover { border-color: rgba(148,218,245,.9); color: #0b6e9d; background: linear-gradient(135deg, rgba(255,255,255,.96), rgba(213,242,253,.72)); box-shadow: 0 13px 26px rgba(24, 86, 115, .14), inset 0 1px 0 #fff; transform: translateY(-1px); }
+  .triage-nav-button:last-child:hover { transform: translateY(-1px); }
+  .triage-hero { grid-template-columns: minmax(0, 1fr) 7.25rem; min-height: 0; margin: 0 0 1.5rem; border: 0; border-radius: 0; padding: .8rem 0 1.6rem; background: transparent; }
+  .triage-hero::before { background: radial-gradient(circle at 91% 49%, rgba(186,230,253,.72), transparent 32%); }
+  .triage-hero-copy p { font-size: .68rem; letter-spacing: .13em; }
+  .triage-hero-copy h1 { max-width: 35rem; margin-top: .75rem; font-size: clamp(2.2rem, 4vw, 3.45rem); letter-spacing: -.072em; line-height: 1.01; }
+  .triage-hero-copy span { max-width: 31rem; margin-top: 1rem; font-size: .96rem; }
+  .triage-hero-mark { width: 5.8rem; height: 5.8rem; margin-right: 1rem; }
+  .triage-hero-mark i:first-child { border-width: 2px; border-color: #b9e7fa; }
+  .triage-hero-mark i:nth-child(2) { inset: 1.15rem; border-color: #d9f1fa; }
+  .triage-hero-mark b { inset: 2.2rem; border-radius: .75rem; box-shadow: 0 10px 20px rgba(11,110,157,.12); }
+  .triage-card { grid-template-columns: 17rem minmax(0,1fr); border: 0; border-radius: 1.8rem; background: #fff; box-shadow: 0 24px 58px rgba(24, 67, 93, .12); }
+  .triage-rail { position: relative; min-height: 42rem; overflow: hidden; padding: 2.25rem 2rem; background: linear-gradient(155deg, #103a55 0%, #0b668f 100%); }
+  .triage-rail::after { position: absolute; right: -5.5rem; bottom: -5.5rem; width: 15rem; height: 15rem; border: 1px solid rgba(186,230,253,.28); border-radius: 50%; box-shadow: 0 0 0 2rem rgba(186,230,253,.06), 0 0 0 4rem rgba(186,230,253,.04); content: ''; }
+  .triage-rail-brand, .triage-rail-icon, .triage-rail > p, .triage-rail ol, .triage-rail small { position: relative; z-index: 1; }
+  .triage-rail-icon { width: 2.65rem; height: 2.65rem; margin-top: 3.75rem; border-radius: .8rem; }
+  .triage-rail > p { margin-top: 1.4rem; font-size: 1rem; }
+  .triage-rail ol { gap: 1rem; margin-top: 2.2rem; }
+  .triage-rail li { grid-template-columns: 1.9rem 1fr; gap: .75rem; font-size: .74rem; }
+  .triage-rail li b { width: 1.9rem; height: 1.9rem; border-radius: 50%; }
+  .triage-main { display: flex; flex-direction: column; background: linear-gradient(135deg, #fff 0%, #fbfeff 100%); }
+  .triage-progress-track { height: .32rem; margin: 1.45rem 2rem 0; border-radius: 99px; background: #e4f0f5; }
+  .triage-progress-value { border-radius: 99px; }
+  .triage-content { flex: 1; padding: clamp(2rem, 4.5vw, 3.75rem); }
+  .triage-card-header { align-items: center; padding-bottom: 1.35rem; }
+  .triage-kicker { color: #0876aa; font-size: .7rem; }
+  .triage-card-header p { font-size: .83rem; }
+  .triage-step-count { padding: .5rem .8rem; color: #0b6e9d; background: #e8f7fc; }
+  .triage-question-state { padding-top: 2.5rem; }
+  .triage-question-number { width: 2.55rem; height: 2.55rem; color: #0876aa; background: #e7f6fd; }
+  .triage-question-state h3 { max-width: 40rem; margin-top: 1.15rem; font-size: clamp(1.8rem, 3.25vw, 2.6rem); line-height: 1.1; }
+  .triage-options { gap: .7rem; max-width: 39rem; margin-top: 2.25rem; }
+  .triage-option { min-height: 4.5rem; border-color: #d6eaf2; border-radius: .9rem; padding: .9rem 1.1rem; font-size: .96rem; background: #fff; }
+  .triage-option:hover { border-color: #69c8eb; background: #f1fbff; box-shadow: 0 13px 24px rgba(11,110,157,.1); }
+  .triage-option-letter { width: 2.15rem; height: 2.15rem; border-color: #c7e4ef; color: #0876aa; background: #f7fdff; }
+  .triage-privacy { margin-top: 1.35rem; color: #5f7b8e; }
+  .triage-page--uri .triage-rail { background: linear-gradient(155deg, #174b66 0%, #087daf 100%); }
+  .triage-page--sti .triage-rail { background: linear-gradient(155deg, #112f46 0%, #174b66 100%); }
+  /* URI and STI previously carried an older white hero-card override. Keep
+     every care path on the same seamless page surface as UTI. */
+  .triage-page--uri .triage-hero, .triage-page--sti .triage-hero { margin: 0 0 1.5rem; background: transparent; }
+  .triage-page--uri .triage-hero-mark b { border-radius: 50%; }
+  .triage-page--sti .triage-hero-mark b { border-radius: .4rem; }
+
+  .treatment-card { min-height: 29rem; border: 1px solid rgba(164, 211, 231, .48); border-radius: 1.65rem; background: rgba(255,255,255,.94); box-shadow: 0 18px 38px rgba(20, 64, 89, .08); }
+  .treatment-card::before { height: 4px; background: linear-gradient(90deg, #38bdf8 0%, #9cddf5 62%, transparent 100%); }
+  .treatment-card:hover { border-color: rgba(56,189,248,.6); box-shadow: 0 24px 44px rgba(20, 81, 111, .13); }
+  .treatment-card-top { display: flex; align-items: center; justify-content: space-between; margin-top: 1.7rem; }
+  .treatment-card-index { color: #0b6e9d; font-size: .72rem; font-weight: 800; letter-spacing: .1em; }
+  .treatment-card-kicker { margin-top: 3.25rem; color: #0876aa; }
+  .treatment-card-title { max-width: 15rem; font-size: clamp(1.65rem,2.4vw,2.05rem); line-height: 1.07; }
+  .treatment-card-description { max-width: 18rem; margin-top: 1.2rem; font-size: .98rem; line-height: 1.62; }
+  .treatment-card-meta { padding-top: 2rem; }
+  .treatment-card-button { min-height: 3.5rem; border-radius: .95rem; margin-top: 1.15rem; margin-bottom: 1.85rem; }
+  .treatment-card--uri::before { background: linear-gradient(90deg, #0b6e9d 0%, #85d8f6 62%, transparent 100%); }
+  .treatment-card--sti::before { background: linear-gradient(90deg, #103a55 0%, #38bdf8 62%, transparent 100%); }
+  .treatment-card--uri .treatment-card-index { color: #0b6e9d; }
+  .treatment-card--sti .treatment-card-index { color: #174b66; }
+
+  /* Treatment-card direction from the Figma care-path study. */
+  .treatment-card { min-height: 31.5rem; padding: 0 !important; overflow: hidden; }
+  .treatment-card::before { display: none; }
+  .treatment-card-cover { position: relative; height: 9.6rem; flex: 0 0 auto; overflow: hidden; padding: 2rem; background: linear-gradient(135deg, #e5f7fd 0%, #d7f2fc 100%); }
+  .treatment-card-cover::after { position: absolute; right: -2.9rem; bottom: -3.9rem; width: 10.5rem; height: 10.5rem; border: 1px solid rgba(11,110,157,.14); border-radius: 50%; box-shadow: 0 0 0 1.15rem rgba(255,255,255,.19); content: ''; }
+  .treatment-card-cover-line { display: block; width: 4.75rem; height: .3rem; border-radius: 99px; background: #38bdf8; }
+  .treatment-card-cover-label { display: block; margin-top: .8rem; color: #0876aa; font-size: .66rem; font-weight: 800; letter-spacing: .11em; text-transform: uppercase; }
+  .treatment-card-index { position: absolute; top: 1.8rem; right: 2rem; color: #417f9f; font-size: 1.55rem; font-weight: 800; letter-spacing: -.05em; }
+  .treatment-card-cover-mark { position: absolute; right: 2rem; bottom: 1.55rem; display: grid; width: 3.45rem; height: 3.45rem; place-items: center; border-radius: 1.1rem; background: rgba(255,255,255,.52); box-shadow: inset 0 1px 0 rgba(255,255,255,.85); z-index: 1; }
+  .treatment-card-cover-mark i { position: absolute; display: block; width: 1.35rem; height: .26rem; border-radius: 99px; background: #38bdf8; }
+  .treatment-card-cover-mark i:last-child { width: .78rem; background: #0b6e9d; transform: translateY(.52rem); }
+  .treatment-card-body { min-height: 0; padding: 1.35rem 1.75rem 1.7rem; }
+  .treatment-card-top, .treatment-card-kicker, .treatment-card-title, .treatment-card-description, .treatment-card-meta, .treatment-card-button { margin-left: 0; margin-right: 0; }
+  .treatment-card-top { justify-content: flex-start; margin-top: 0; }
+  .treatment-card-title { max-width: 18rem; margin-top: 1.5rem; font-size: clamp(1.55rem,2.25vw,1.95rem); }
+  .treatment-card-description { max-width: 18rem; margin-top: .8rem; font-size: .92rem; }
+  .treatment-card-note { margin-top: 1.55rem; border-top: 1px solid #dcecf2; padding-top: 1.25rem; color: #5c7a8d; font-size: .76rem; font-weight: 600; line-height: 1.5; }
+  .treatment-card-meta { margin-top: auto; padding-top: 1.25rem; }
+  .treatment-card-button { gap: .55rem; min-height: 3.35rem; margin-top: 1rem; margin-bottom: 0; border-radius: .9rem; }
+  .treatment-card--uri .treatment-card-cover { background: linear-gradient(135deg, #e1f4fb 0%, #d7edf7 100%); }
+  .treatment-card--uri .treatment-card-cover-line, .treatment-card--uri .treatment-card-cover-mark i:first-child { background: #0b6e9d; }
+  .treatment-card--sti .treatment-card-cover { background: linear-gradient(135deg, #eaf4f8 0%, #dfedf3 100%); }
+  .treatment-card--sti .treatment-card-cover-line, .treatment-card--sti .treatment-card-cover-mark i:first-child { background: #103a55; }
+  .treatment-card--sti .treatment-card-cover-label { color: #174b66; }
+  .treatment-card--sti .treatment-card-cover-mark i:last-child { background: #174b66; }
+
+  @media (max-width: 760px) {
+    .triage-shell { width: min(100% - 1.25rem, 68rem); }
+    .triage-hero { grid-template-columns: minmax(0, 1fr) 5rem; padding-bottom: 1.25rem; }
+    .triage-hero-copy h1 { font-size: 2.25rem; }
+    .triage-hero-mark { width: 4.7rem; height: 4.7rem; margin-right: 0; }
+    .triage-hero-mark i:nth-child(2) { inset: .92rem; }
+    .triage-hero-mark b { inset: 1.78rem; }
+    .triage-card { grid-template-columns: 1fr; border-radius: 1.35rem; }
+    .triage-rail { min-height: auto; padding: 1.15rem 1.35rem; }
+    .triage-progress-track { margin: 1rem 1.35rem 0; }
+    .triage-content { padding: 1.55rem 1.35rem 2rem; }
+    .triage-question-state { padding-top: 1.85rem; }
+    .triage-question-state h3 { font-size: 1.75rem; }
+    .triage-option { min-height: 4rem; font-size: .9rem; }
+    .treatment-card { min-height: 25.5rem; }
+    .treatment-card-cover { height: 8.75rem; padding: 1.5rem; }
+    .treatment-card-cover-mark { right: 1.5rem; bottom: 1.25rem; }
+    .treatment-card-index { top: 1.35rem; right: 1.5rem; }
+    .treatment-card-body { padding: 1.2rem 1.4rem 1.4rem; }
+    .treatment-card-title { font-size: 1.7rem; }
+  }
 }

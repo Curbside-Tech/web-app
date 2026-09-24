@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ALGORITHMS } from '../data/algorithms';
 
@@ -6,9 +6,31 @@ interface DynamicTriageProps {
   treatmentId: string;
 }
 
+const triagePresentation = {
+  uti: {
+    eyebrow: 'Urinary care',
+    heading: <>Let’s get a clearer<br />picture together.</>,
+    description: 'A few focused questions help us understand urinary symptoms and guide your next step.',
+    cue: 'Focused urinary check-in',
+  },
+  uri: {
+    eyebrow: 'Respiratory care',
+    heading: <>Tell us what you’re<br />feeling today.</>,
+    description: 'Share the symptoms that matter so we can help guide your respiratory care safely.',
+    cue: 'Focused respiratory check-in',
+  },
+  sti: {
+    eyebrow: 'Private sexual health care',
+    heading: <>Your care starts<br />privately, here.</>,
+    description: 'Take this at your own pace. Your answers are reviewed discreetly and securely.',
+    cue: 'Private health check-in',
+  },
+};
+
 export default function DynamicTriage({ treatmentId }: DynamicTriageProps) {
   const navigate = useNavigate();
   const algorithm = ALGORITHMS[treatmentId] || ALGORITHMS.uti;
+  const presentation = triagePresentation[algorithm.id as keyof typeof triagePresentation] || triagePresentation.uti;
 
   const [currentStep, setCurrentStep] = useState<string>(algorithm.startQuestionId);
   const [history, setHistory] = useState<string[]>([]);
@@ -50,12 +72,12 @@ export default function DynamicTriage({ treatmentId }: DynamicTriageProps) {
       : Math.min(Math.round(((history.length + 1) / totalQuestions) * 100), 95);
 
   return (
-    <div className="w-full max-w-2xl mx-auto">
-      {/* TOP NAVIGATION BAR */}
-      <div className="flex items-center justify-between mb-4 px-1">
+    <main className={`triage-page triage-page--${algorithm.id}`}>
+      <div className="triage-shell">
+      <div className="triage-nav">
         <button
           onClick={handleGoBack}
-          className="inline-flex items-center gap-2 text-sm font-medium text-slate-600 hover:text-teal-600 transition-colors"
+          className="triage-nav-button"
         >
           <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
@@ -65,7 +87,7 @@ export default function DynamicTriage({ treatmentId }: DynamicTriageProps) {
 
         <button
           onClick={() => navigate('/')}
-          className="inline-flex items-center gap-1.5 text-sm font-medium text-slate-600 hover:text-teal-600 transition-colors"
+          className="triage-nav-button"
         >
           <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path
@@ -79,36 +101,53 @@ export default function DynamicTriage({ treatmentId }: DynamicTriageProps) {
         </button>
       </div>
 
-      {/* MAIN CONTAINER CARD */}
-      <div className="bg-white rounded-2xl shadow-xl shadow-slate-200/50 border border-slate-100 overflow-hidden">
-        {/* PROGRESS BAR */}
-        <div className="w-full bg-slate-100 h-1.5">
-          <div
-            className="bg-teal-500 h-1.5 transition-all duration-300 ease-out"
-            style={{ width: `${progressPercent}%` }}
-          />
+      <section className="triage-hero">
+        <div className="triage-hero-copy">
+          <p>{presentation.eyebrow}</p>
+          <h1>{presentation.heading}</h1>
+          <span>{presentation.description}</span>
         </div>
+        <div className="triage-hero-mark" aria-hidden="true"><i /><i /><b>✦</b></div>
+      </section>
 
-        <div className="p-6 sm:p-8">
-          <div className="flex items-center justify-between mb-6">
-            <span className="text-xs font-semibold uppercase tracking-wider text-teal-600 bg-teal-50 px-3 py-1 rounded-full border border-teal-100">
-              {algorithm.name} Evaluation
+      <section className="triage-card">
+        <aside className="triage-rail">
+          <span className="triage-rail-brand">CURBSIDE</span>
+          <div className="triage-rail-icon">✦</div>
+          <p>Your care journey</p>
+          <ol>
+            <li className="is-active"><b>01</b><span>Care check-in</span></li>
+            <li><b>02</b><span>Appointment details</span></li>
+            <li><b>03</b><span>Clinician review</span></li>
+          </ol>
+          <small>Private and encrypted</small>
+        </aside>
+        <div className="triage-main">
+          <div className="triage-progress-track">
+            <div
+              className="triage-progress-value"
+              style={{ width: `${progressPercent}%` }}
+            />
+          </div>
+          <div className="triage-content">
+          <div className="triage-card-header">
+            <div>
+              <span className="triage-kicker">{presentation.cue}</span>
+              <p>{algorithm.name} evaluation</p>
+            </div>
+            <span className="triage-step-count">
+              {currentStep === 'er' || currentStep === 'form' ? 'Complete' : `Step ${history.length + 1}`}
             </span>
-            {currentStep !== 'er' && currentStep !== 'form' && (
-              <span className="text-xs font-medium text-slate-400">
-                Step {history.length + 1}
-              </span>
-            )}
           </div>
 
-          {/* ER IMMEDIATE CARE SCREEN */}
           {currentStep === 'er' && (
-            <div className="text-center py-4 space-y-4">
-              <div className="w-16 h-16 bg-red-100 text-red-600 rounded-full flex items-center justify-center mx-auto text-2xl font-bold">
+            <div className="triage-emergency">
+              <div className="triage-emergency-icon">
                 !
               </div>
-              <h3 className="text-2xl font-bold text-slate-900">Immediate Evaluation Required</h3>
-              <p className="text-slate-600 leading-relaxed max-w-md mx-auto text-sm">
+              <span>In-person evaluation needed</span>
+              <h3>Immediate evaluation required</h3>
+              <p>
                 Based on your symptoms, online telehealth evaluation is not safe for your condition. Please visit an Emergency Room or Urgent Care facility immediately.
               </p>
               <button
@@ -116,24 +155,23 @@ export default function DynamicTriage({ treatmentId }: DynamicTriageProps) {
                   setCurrentStep(algorithm.startQuestionId);
                   setHistory([]);
                 }}
-                className="mt-4 px-5 py-2.5 bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-semibold rounded-lg transition-colors"
+                className="triage-secondary-button"
               >
                 Restart Assessment
               </button>
             </div>
           )}
 
-          {/* HEALTHIE EMBEDDED FORM SCREEN */}
           {currentStep === 'form' && (
-            <div className="space-y-6">
-              <div className="p-4 bg-emerald-50 border border-emerald-200 rounded-xl flex items-center gap-3 text-emerald-800 text-sm font-medium">
-                <svg className="w-5 h-5 text-emerald-600 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+            <div className="triage-form-state">
+              <div className="triage-complete-note">
+                <svg fill="currentColor" viewBox="0 0 20 20">
                   <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                 </svg>
-                <span>Triage Completed: Please complete your appointment details below.</span>
+                <span><strong>Care check-in complete.</strong> Please complete your appointment details below.</span>
               </div>
 
-              <div className="rounded-xl overflow-hidden border border-slate-200 bg-white">
+              <div className="triage-embed-frame">
                 <iframe
                   key={algorithm.healthieUrl}
                   src={algorithm.healthieUrl}
@@ -142,21 +180,20 @@ export default function DynamicTriage({ treatmentId }: DynamicTriageProps) {
                 />
               </div>
 
-              {/* POST SUBMISSION ACTION OPTIONS */}
-              <div className="bg-slate-50 border border-slate-200/80 rounded-xl p-5 text-center space-y-3">
-                <p className="text-xs font-medium text-slate-500">Finished submitting your form?</p>
-                <div className="flex flex-col sm:flex-row gap-3 justify-center">
+              <div className="triage-post-form">
+                <p>Finished submitting your form?</p>
+                <div>
                   <a
                     href="https://securestaging.gethealthie.com/users/sign_in"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="py-2.5 px-5 bg-teal-600 hover:bg-teal-700 text-white font-medium rounded-lg text-sm transition-colors text-center shadow-sm"
+                    className="triage-primary-button"
                   >
                     Sign In to Portal
                   </a>
                   <button
                     onClick={() => navigate('/sign-up', { state: { treatmentId } })}
-                    className="py-2.5 px-5 bg-white hover:bg-slate-100 text-slate-700 font-medium rounded-lg text-sm border border-slate-300 transition-colors text-center"
+                    className="triage-secondary-button"
                   >
                     Create Account
                   </button>
@@ -165,25 +202,25 @@ export default function DynamicTriage({ treatmentId }: DynamicTriageProps) {
             </div>
           )}
 
-          {/* DYNAMIC QUESTION STEPS */}
           {currentStep !== 'er' && currentStep !== 'form' && currentQuestion && (
-            <div className="space-y-6">
-              <h3 className="text-lg sm:text-xl font-semibold text-slate-900 leading-relaxed">
+            <div className="triage-question-state">
+              <div className="triage-question-number">{String(history.length + 1).padStart(2, '0')}</div>
+              <h3>
                 {currentQuestion.text}
               </h3>
 
               {/* BUTTON OPTIONS */}
               {currentQuestion.type === 'button' && (
-                <div className="grid gap-3 sm:grid-cols-1">
+                <div className="triage-options">
                   {currentQuestion.options?.map((opt) => (
                     <button
                       key={opt.label}
                       onClick={() => handleNextStep(opt.nextStep)}
-                      className="group flex items-center justify-between p-4 bg-slate-50 hover:bg-teal-50/60 border border-slate-200 hover:border-teal-300 rounded-xl font-medium text-slate-800 hover:text-teal-900 transition-all text-left shadow-sm hover:shadow"
+                      className="triage-option"
                     >
-                      <span>{opt.label}</span>
+                      <span className="triage-option-letter">{String.fromCharCode(65 + (currentQuestion.options?.indexOf(opt) ?? 0))}</span><span>{opt.label}</span>
                       <svg
-                        className="w-5 h-5 text-slate-400 group-hover:text-teal-600 group-hover:translate-x-0.5 transition-all"
+                        className="triage-option-arrow"
                         fill="none"
                         viewBox="0 0 24 24"
                         stroke="currentColor"
@@ -203,7 +240,7 @@ export default function DynamicTriage({ treatmentId }: DynamicTriageProps) {
                     const next = currentQuestion.options?.[0]?.nextStep || 'form';
                     handleNextStep(next);
                   }}
-                  className="space-y-4"
+                  className="triage-text-form"
                 >
                   <input
                     type="text"
@@ -211,11 +248,11 @@ export default function DynamicTriage({ treatmentId }: DynamicTriageProps) {
                     value={textInput}
                     onChange={(e) => setTextInput(e.target.value)}
                     placeholder="Type your response here..."
-                    className="w-full px-4 py-3.5 border border-slate-300 rounded-xl text-slate-900 focus:ring-2 focus:ring-teal-500 focus:border-teal-500 focus:outline-none transition-all placeholder:text-slate-400"
+                    className="triage-text-input"
                   />
                   <button
                     type="submit"
-                    className="w-full py-3.5 bg-teal-600 hover:bg-teal-700 text-white font-semibold rounded-xl transition-all shadow-md shadow-teal-600/20 active:scale-[0.99]"
+                    className="triage-primary-button triage-text-continue"
                   >
                     Continue →
                   </button>
@@ -223,8 +260,11 @@ export default function DynamicTriage({ treatmentId }: DynamicTriageProps) {
               )}
             </div>
           )}
+          </div>
         </div>
+      </section>
+      <p className="triage-privacy">⌁ Your answers are private, encrypted, and reviewed securely.</p>
       </div>
-    </div>
+    </main>
   );
 }

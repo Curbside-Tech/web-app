@@ -1,6 +1,6 @@
-import React from 'react';
 import { useSearchParams, useLocation } from 'react-router-dom';
 import DynamicTriage from '../pages/DynamicTriage';
+import PageShell from './layout/PageShell';
 
 export default function BookingPage() {
   const [searchParams] = useSearchParams();
@@ -13,9 +13,5 @@ export default function BookingPage() {
     location.state?.treatmentId ||
     'uti'; // Default fallback
 
-  return (
-    <div className="w-full max-w-4xl mx-auto p-4">
-      <DynamicTriage treatmentId={treatmentId} />
-    </div>
-  );
+  return <PageShell><DynamicTriage treatmentId={treatmentId} /></PageShell>;
 }
