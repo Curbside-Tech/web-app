@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
 import Home from './pages/Home';
 import About from './pages/About';
+import WhyChooseUs from './pages/WhyChooseUs';
 import Contact from './pages/Contact';
 import Faq from './pages/Faq';
 import Terms from './pages/Terms';
@@ -35,6 +36,7 @@ export default function App() {
         <Route path="/how-it-works" element={<HowItWorks />} />
         <Route path="/treatments" element={<Treatments />} />
         <Route path="/about" element={<About />} />
+        <Route path="/why-choose-us" element={<WhyChooseUs />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/faq" element={<Faq />} />
         <Route path="/terms" element={<Terms />} />

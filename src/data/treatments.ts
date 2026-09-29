@@ -4,7 +4,7 @@ import type { Treatment } from '../types';
 export const treatments: Treatment[] = [
   {
     id: 'uti',
-    name: 'UTI (Urinary Tract Infection) Algorithm',
+    name: 'UTI (Urinary Tract Infection)',
     description: 'Get relief for uncomplicated urinary tract infections with a quick async consultation.',
     mode: 'async',
     subscriptionRequired: false,
