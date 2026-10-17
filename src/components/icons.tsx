@@ -1,13 +1,13 @@
+import logoMarkImg from '../assets/logo-mark.png';
+
 interface IconProps {
   className?: string;
+  alt?: string;
 }
 
-export function LogoMark({ className = 'h-5 w-5' }: IconProps) {
+export function LogoMark({ className = 'h-5 w-5', alt = 'Curbside Health' }: IconProps) {
   return (
-    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2}>
-      <path strokeLinecap="round" strokeLinejoin="round" d="M12 4v16M4 12h16" />
-      <circle cx="12" cy="12" r="9" strokeWidth={1.5} />
-    </svg>
+    <img src={logoMarkImg} alt={alt} className={`${className} object-contain`} />
   );
 }
 

@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { LogoMark } from '../icons';
+import logoHorizontal from '../../assets/logo-horizontal.png';
 
 const footerLinks = {
   product: [
@@ -24,14 +24,13 @@ export default function Footer() {
       <div className="glass-panel mx-auto max-w-6xl px-6 py-10 sm:px-10">
         <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
           <div>
-            <div className="flex items-center gap-2.5">
-              <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-teal-accent to-teal-glow">
-                <LogoMark className="h-4 w-4 text-white" />
-              </div>
-              <p className="text-lg font-bold text-slate-deep">
-                Curbside<span className="gradient-text"> Health</span>
-              </p>
-            </div>
+            <Link to="/" className="group inline-flex items-center" aria-label="Curbside Health Home">
+              <img
+                src={logoHorizontal}
+                alt="Curbside Health"
+                className="h-9 w-auto object-contain transition-transform duration-200 group-hover:scale-105"
+              />
+            </Link>
             <p className="mt-4 text-sm leading-relaxed text-slate-500">
               Convenient, clinician-led telehealth for everyday health concerns — from the comfort of home.
             </p>

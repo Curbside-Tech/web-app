@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { LogoMark } from '../icons';
+import logoHorizontal from '../../assets/logo-horizontal.png';
 
 interface NavBarProps {
   onNavigate?: () => void;
@@ -33,11 +33,12 @@ export default function NavBar({ onNavigate }: NavBarProps) {
     <header className="sticky top-0 z-50 px-3 py-3 sm:px-6 sm:py-4">
       <nav className="glass-panel mx-auto max-w-6xl px-4 py-2.5 sm:px-6">
         <div className="relative flex items-center justify-between">
-          <Link to="/" onClick={closeMenu} className="group flex items-center gap-2.5">
-            <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-br from-teal-accent to-teal-glow shadow-md shadow-teal-accent/20 transition-transform group-hover:scale-105">
-              <LogoMark className="h-5 w-5 text-white" />
-            </div>
-            <span className="text-lg font-bold tracking-tight text-slate-deep">Curbside<span className="gradient-text"> Health</span></span>
+          <Link to="/" onClick={closeMenu} className="group flex items-center" aria-label="Curbside Health Home">
+            <img
+              src={logoHorizontal}
+              alt="Curbside Health"
+              className="h-10 sm:h-11 w-auto object-contain transition-transform duration-200 group-hover:scale-105"
+            />
           </Link>
 
           <div className="hidden items-center gap-1 md:absolute md:left-1/2 md:-translate-x-1/2 md:flex">

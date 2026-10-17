@@ -1,6 +1,7 @@
 import type { ReactNode } from 'react';
 import { Link } from 'react-router-dom';
-import { CheckCircle, LogoMark, ShieldCheck } from '../icons';
+import logoMark from '../../assets/logo-mark.png';
+import { CheckCircle, ShieldCheck } from '../icons';
 import PageShell from './PageShell';
 
 interface AuthExperienceProps {
@@ -32,9 +33,11 @@ export default function AuthExperience({ children, mode }: AuthExperienceProps) 
             <div className="auth-aside-orb auth-aside-orb--one" />
             <div className="auth-aside-orb auth-aside-orb--two" />
             <div className="relative flex h-full flex-col">
-              <Link to="/" className="flex w-fit items-center gap-2.5 text-white">
-                <span className="flex h-10 w-10 items-center justify-center rounded-2xl bg-[#bae6fd] text-[#123b56]"><LogoMark className="h-5 w-5" /></span>
-                <span className="text-lg font-bold tracking-tight">Curbside Health</span>
+              <Link to="/" className="group flex w-fit items-center gap-3 text-white">
+                <span className="flex h-11 w-11 items-center justify-center rounded-2xl bg-white/95 p-1.5 shadow-md shadow-black/10 transition-transform group-hover:scale-105">
+                  <img src={logoMark} alt="Curbside Health" className="h-full w-full object-contain" />
+                </span>
+                <span className="text-xl font-bold tracking-tight">Curbside Health</span>
               </Link>
               <div className="mt-auto pt-20 lg:pt-0">
                 <p className="text-[11px] font-extrabold uppercase tracking-[0.17em] text-[#bae6fd]">{detail.eyebrow}</p>
