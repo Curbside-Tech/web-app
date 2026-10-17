@@ -1,30 +1,105 @@
 import type { Treatment } from '../types';
 
-
 export const treatments: Treatment[] = [
   {
     id: 'uti',
     name: 'UTI (Urinary Tract Infection)',
-    description: 'Get relief for uncomplicated urinary tract infections with a quick async consultation.',
+    description: 'Get relief for uncomplicated urinary tract infections with a quick, clinician-led async consultation.',
     mode: 'async',
     subscriptionRequired: false,
+    price: '$39',
+    durationMinutes: '15 min dedicated physician review',
+    category: 'Urinary Health',
+    organSystem: 'Urinary & Renal System',
     healthieUrl: 'https://securestaging.gethealthie.com/appointments/embed_appt?dietitian_id=6590487&embed_form_id=2391965&form_only=true&primary_color=4A9625',
+    popular: true,
+    details: [
+      'Focused clinical screening for acute uncomplicated cystitis',
+      'Physician-prescribed antibiotic therapy sent to your pharmacy if indicated',
+      'Evidence-based home comfort remedies & hydration guidance',
+      '48-hour follow-up messaging window with your clinician',
+      'Confidential medical record generated in Healthie EMR',
+    ],
   },
   {
     id: 'uri',
     name: 'URI (Upper Respiratory Infection)',
-    description: 'Treatment guidance for common upper respiratory infections without leaving home.',
+    description: 'Treatment guidance for common colds, sinus congestion, acute bronchitis, and sore throat from home.',
     mode: 'async',
     subscriptionRequired: false,
-    healthieUrl: 'https://securestaging.gethealthie.com/appointments/embed_appt?dietitian_id=6590487&embed_form_id=2391968&form_only=true&primary_color=4A9625'
+    price: '$39',
+    durationMinutes: '15 min dedicated physician review',
+    category: 'Respiratory Care',
+    organSystem: 'Respiratory System',
+    healthieUrl: 'https://securestaging.gethealthie.com/appointments/embed_appt?dietitian_id=6590487&embed_form_id=2391968&form_only=true&primary_color=4A9625',
+    popular: true,
+    details: [
+      'Comprehensive symptom assessment for cold, cough, and sinus pain',
+      'Differential triage to rule out high-risk complications',
+      'Prescription therapy or symptom relief plan sent to your pharmacy',
+      'Return-to-work or school medical excuse note upon clinical discretion',
+      'Secure follow-up messaging for unexpected symptom changes',
+    ],
   },
   {
     id: 'sti',
-    name: 'STI Exposure',
-    description: 'Screening and triage for recent STI exposure, discharge, and asymptomatic testing.',
+    name: 'STI Exposure & Screening',
+    description: 'Private screening and triage for recent STI exposure, discharge, and asymptomatic testing coordination.',
     mode: 'async',
     subscriptionRequired: false,
-    healthieUrl: 'https://securestaging.gethealthie.com/appointments/embed_appt?dietitian_id=6590487&embed_form_id=2391969&form_only=true&primary_color=4A9625'
+    price: '$49',
+    durationMinutes: '20 min dedicated physician review',
+    category: 'Sexual Health',
+    organSystem: 'Reproductive & Intimate Health',
+    healthieUrl: 'https://securestaging.gethealthie.com/appointments/embed_appt?dietitian_id=6590487&embed_form_id=2391969&form_only=true&primary_color=4A9625',
+    popular: false,
+    details: [
+      'Discreet, judgment-free clinical risk evaluation',
+      'Treatment recommendations & e-prescriptions when clinically appropriate',
+      'Confidential lab testing orders coordinated with Quest or Labcorp',
+      'Partner notification, prevention, and exposure safety protocols',
+      'Strictly confidential charting protected under HIPAA in Healthie',
+    ],
+  },
+  {
+    id: 'video-consult',
+    name: 'General Video Doctor Consultation',
+    description: 'Connect one-on-one with a board-certified physician for visual exams, rashes, or complex questions.',
+    mode: 'video',
+    subscriptionRequired: false,
+    price: '$69',
+    durationMinutes: '25 min live 1-on-1 physician visit',
+    category: 'General Medicine',
+    organSystem: 'Multi-System / Visual Exam',
+    healthieUrl: 'https://securestaging.gethealthie.com/appointments/embed_appt?dietitian_id=6590487&embed_form_id=2391965&form_only=true&primary_color=4A9625',
+    popular: false,
+    details: [
+      'Live HD video consultation from the comfort of your home',
+      'Visual examination of rashes, skin lesions, eye irritation, or throat',
+      'Personalized diagnosis and real-time medical discussion',
+      'Electronic prescription sent directly to your local pharmacy',
+      'Comprehensive visit summary and physician notes in your portal',
+    ],
+  },
+  {
+    id: 'chronic-care',
+    name: 'Ongoing Health & Wellness Management',
+    description: 'Continuous doctor-led management, recurring refills, and ongoing check-ins for routine health concerns.',
+    mode: 'subscription',
+    subscriptionRequired: true,
+    price: '$49 / mo',
+    durationMinutes: 'Continuous monthly care & priority review',
+    category: 'Ongoing Care',
+    organSystem: 'Metabolic & Preventive Health',
+    healthieUrl: 'https://securestaging.gethealthie.com/appointments/embed_appt?dietitian_id=6590487&embed_form_id=2391965&form_only=true&primary_color=4A9625',
+    popular: false,
+    details: [
+      'Continuous physician monitoring and scheduled check-ins',
+      'Seamless refill management without repeat in-person visits',
+      'Unlimited secure two-way messaging with your clinical care team',
+      'Tailored preventative health guidance and lifestyle support',
+      'Cancel or pause anytime with zero cancellation penalties',
+    ],
   },
 ];
 
@@ -32,3 +107,4 @@ export async function fetchTreatments(): Promise<Treatment[]> {
   // TODO: swap to real API call — return fetch('/api/treatments').then(r => r.json())
   return treatments;
 }
+

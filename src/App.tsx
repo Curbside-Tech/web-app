@@ -11,6 +11,7 @@ import SignIn from './pages/SignIn';
 import SignUp from './pages/SignUp';
 import HowItWorks from './pages/HowItWorks';
 import Treatments from './pages/Treatments';
+import GetStarted from './pages/GetStarted';
 import BookingForm from './components/BookingForm';
 
 function RouteScrollManager() {
@@ -33,10 +34,11 @@ export default function App() {
       <RouteScrollManager />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/how-it-works" element={<HowItWorks />} />
-        <Route path="/treatments" element={<Treatments />} />
         <Route path="/about" element={<About />} />
         <Route path="/why-choose-us" element={<WhyChooseUs />} />
+        <Route path="/how-it-works" element={<HowItWorks />} />
+        <Route path="/get-started" element={<GetStarted />} />
+        <Route path="/treatments" element={<Treatments />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/faq" element={<Faq />} />
         <Route path="/terms" element={<Terms />} />

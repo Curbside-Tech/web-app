@@ -4,10 +4,11 @@ interface GlassCardProps extends HTMLAttributes<HTMLDivElement> {
   children: ReactNode;
   interactive?: boolean;
   accent?: boolean;
-  padding?: 'sm' | 'md' | 'lg';
+  padding?: 'none' | 'sm' | 'md' | 'lg';
 }
 
 const paddingMap = {
+  none: '',
   sm: 'p-4',
   md: 'p-6',
   lg: 'p-8',

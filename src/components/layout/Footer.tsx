@@ -4,12 +4,13 @@ import { LogoMark } from '../icons';
 const footerLinks = {
   product: [
     { to: '/how-it-works', label: 'How it works' },
-    { to: '/treatments', label: 'Treatments' },
+    { to: '/get-started', label: 'Get Started' },
     { to: '/faq', label: 'FAQ' },
   ],
   company: [
     { to: '/about', label: 'About Us' },
-    { to: '/contact', label: 'Contact' },
+    { to: '/why-choose-us', label: 'Why Choose Us' },
+    { to: '/contact', label: 'Contact & Feedback' },
   ],
   legal: [
     { to: '/terms', label: 'Terms & Conditions' },

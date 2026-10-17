@@ -7,10 +7,10 @@ interface NavBarProps {
 }
 
 const navLinks = [
-  { to: '/how-it-works', label: 'How it works' },
-  { to: '/treatments', label: 'Treatments' },
-  { to: '/why-choose-us', label: 'Why choose us' },
   { to: '/about', label: 'About' },
+  { to: '/why-choose-us', label: 'Why Choose Us' },
+  { to: '/how-it-works', label: 'How it Works' },
+  { to: '/get-started', label: 'Get Started' },
   { to: '/contact', label: 'Contact' }
 ];
 
@@ -20,6 +20,13 @@ export default function NavBar({ onNavigate }: NavBarProps) {
   const closeMenu = () => {
     setIsOpen(false);
     onNavigate?.();
+  };
+
+  const isLinkActive = (to: string) => {
+    if (to === '/get-started') {
+      return pathname === '/get-started' || pathname === '/treatments';
+    }
+    return pathname === to;
   };
 
   return (
@@ -35,7 +42,14 @@ export default function NavBar({ onNavigate }: NavBarProps) {
 
           <div className="hidden items-center gap-1 md:absolute md:left-1/2 md:-translate-x-1/2 md:flex">
             {navLinks.map((link) => (
-              <Link key={link.to} to={link.to} onClick={closeMenu} className={`rounded-xl px-3.5 py-2 text-sm font-semibold transition-colors hover:bg-[#e7f6fd] hover:text-teal-accent ${pathname === link.to ? 'bg-[#e7f6fd] text-teal-accent' : 'text-slate-600'}`}>
+              <Link
+                key={link.to}
+                to={link.to}
+                onClick={closeMenu}
+                className={`rounded-xl px-3.5 py-2 text-sm font-semibold transition-colors hover:bg-[#e7f6fd] hover:text-teal-accent ${
+                  isLinkActive(link.to) ? 'bg-[#e7f6fd] text-teal-accent' : 'text-slate-600'
+                }`}
+              >
                 {link.label}
               </Link>
             ))}
@@ -55,7 +69,18 @@ export default function NavBar({ onNavigate }: NavBarProps) {
 
         {isOpen && <div className="mt-3 border-t border-slate-100 pt-3 md:hidden">
           <div className="grid gap-1">
-            {navLinks.map((link) => <Link key={link.to} to={link.to} onClick={closeMenu} className="rounded-xl px-3 py-3 text-sm font-semibold text-slate-700 hover:bg-[#e7f6fd] hover:text-teal-accent">{link.label}</Link>)}
+            {navLinks.map((link) => (
+              <Link
+                key={link.to}
+                to={link.to}
+                onClick={closeMenu}
+                className={`rounded-xl px-3 py-3 text-sm font-semibold transition-colors hover:bg-[#e7f6fd] hover:text-teal-accent ${
+                  isLinkActive(link.to) ? 'bg-[#e7f6fd] text-teal-accent' : 'text-slate-700'
+                }`}
+              >
+                {link.label}
+              </Link>
+            ))}
           </div>
         </div>}
       </nav>
